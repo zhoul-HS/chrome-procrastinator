@@ -1,0 +1,180 @@
+﻿<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Procrastinator</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/options.css">
+	<script src="lib/jquery.min.js"></script>
+	<script src="lib/timecode.js"></script>
+	<script src="lib/pc.js"></script>
+	<script src="lib/global.js"></script>
+	<script src="lib/options.js"></script>
+	<script src="lib/bootstrap.min.js"></script>
+</head>
+<body>
+	<div id="container" class="container">
+		<h1>Procrastinator Options</h1>
+		<ul class="action-bar">
+			<li><a href="http://benrowe.info/index.php?r=site/item&type=project&slug=procrastinator"><i class="icon-home"></i> website</a></li>
+			<li><a href="https://chrome.google.com/webstore/detail/enagjojfhclogmaemicdkkohjghgpodh"> chrome store</a></li>
+			<li><a href="#helpModal" role="button" data-toggle="modal"><i class="icon-info-sign"></i> help</a></li>
+			<li><a href="#roadmapModal" role="button" data-toggle="modal"><small>roadmap</small></a></li>
+		</ul>
+		<form id="form">
+			<div class="row">
+				<fieldset class="websites span8">
+					<legend>Websites</legend>
+
+					<div class="control-group">
+						<div class="controls">
+							<!--<button id="">Add Website Wizard</button>
+							<div style="border: 1px solid #CCC; padding: 10px 20px;">
+								<p>POPUP CONTENTS</p>
+								<label for=""><input type="radio" name="" id="" /> Exact Domain</label><br />
+								<label for=""><input type="radio" name="" id="" />Partial Domain</label><br />
+								<label for=""><input type="radio" name="" id="" />Domains &amp; All Sub-domains</label><br />
+								<label for=""><input type="radio" name="" id="" />Sub-section of a website</label>
+							</div>-->
+							<table class="websites table table-striped table-condensed ">
+								<caption>Enter the websites/patterns you wish to block</caption>
+								<thead>
+									<tr>
+										<th>URL/Pattern</th>
+										<th>Times</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="new-entry">
+										<td><input type="text" /></td>
+										<td><input type="text" /></td>
+									</tr>
+								</tbody>
+
+							</table>
+						</div>
+						<!--<div class="row-help">Websites patterns are matched using regular expressions, or just specify the extact domain you're looking for.</div>-->
+					</div>
+				</fieldset>
+				<fieldset class="block-preferences span4">
+					<legend>Preferences</legend>
+					<div class="well well-small">
+						<h3>Status</h3>
+						<div class="control-group enable-app">
+							<label for="" class="control-label">Enable Procrastinator?</label>
+							<div class="controls">
+								<label for="enabled_true" class="radio inline"><input type="radio" name="enabled" id="enabled_true" value="true" checked /> Enabled</label>
+								<label for="enabled_false" class="radio inline"><input type="radio" name="enabled" id="enabled_false" value="false" /> Disabled</label>
+							</div>
+						</div>
+					</div>
+					<div class="well well-small">
+						<h3>When to block?</h3>
+						<div class="control-group">
+							<label for="" class="control-label">How would you want to block your sites?</label>
+							<div class="controls">
+								<label class="radio"><input type="radio" id="time_control_global" name="time_control" value="global" /> Specify the blocked time for <strong>all listed sites</strong></label>
+								<input class="radio-list-input" type="text" name="time_control_global" value="0900-1300,1450-1730" />
+								<label class="radio"><input type="radio" id="time_control_site" name="time_control" value="site" checked />Specify the blocked time <strong>individually</strong></label>
+								<label class="radio"><input type="radio" id="time_control_disabled" name="time_control" value="disabled" />Block all listed sites <strong>at all times</strong></label>
+							</div>
+							<!--<div class="row-help">Do you want to control the  times procrastinator watches your tabs globally, or do you want to control individual websites and when they can be accessed.</div>-->
+						</div>
+						<div class="control-group">
+							<label for="" class="control-label">Days of week?</label>
+							<div class="controls"></div>
+						</div>
+					</div>
+					<div class="well well-small">
+						<h3>Other Options</h3>
+						<div class="control-group">
+							<label for="" class="control-label">Custom Block Page</label>
+							<div class="controls">
+								<input type="text" name="block_url" placeholder="http://site.com/block.html" />
+							</div>
+							<div class="row-help">Specify a url to redirect to</div>
+						</div>
+					</div>
+
+
+				</fieldset>
+			</div>
+			<div class="form-actions">
+				<button id="save" type="submit" class="btn btn-primary"><i class="icon-ok icon-white"></i> Save</button>
+			</div>
+		</form>
+
+		<div id="footer"><a href="https://chrome.google.com/webstore/detail/enagjojfhclogmaemicdkkohjghgpodh/reviews">Feedback</a> | Icons provided by <a href="http://glyphicons.com">glyphicons.com</a> under the <a href="http://creativecommons.org/licenses/by/3.0/deed.en">Creative Commons Attribution 3.0 Unported (CC BY 3.0)</a> license</div>
+	</div>
+
+	<!-- MODALS -->
+	<!-- HELP -->
+	<div class="modal hide" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3 id="myModalLabel1">Help</h3>
+		</div>
+		<div class="modal-body">
+			<dl>
+			<dt id="help_timecode">Timecode</dt>
+			<dd>
+				A timecode is a range of two times.
+				Examples:
+				<dl>
+					<dt>Single Range</dt>
+					<dd>0900-1200</dd>
+					<dt>Multiple Ranges</dt>
+					<dd>0900-1200,1230-1500</dd>
+					<dd>0900-0930,1000-1159</dd>
+					<dd>0900-0930,1000-1159,1301-1630</dd>
+				</dl>
+			</dd>
+		</dl>
+		</div>
+		<div class="modal-footer">
+			<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+			<!--<button class="btn btn-primary">Save changes</button>-->
+		</div>
+	</div>
+	<!-- HELP -->
+	<!-- ROADMAP -->
+	<div class="modal hide" id="roadmapModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3 id="myModalLabel2">RoadMap</h3>
+		</div>
+		<div class="modal-body">
+			<h3>Coming Soon</h3>
+			<ul>
+				<li>Ability to disable for x amount of minutes</li>
+				<li>Reports: Record how often you try to visit blocked websites, throughout the day</li>
+
+				<li>Specify day of week <!-- mirco caramori --></li>
+				<li>Import/Export settings (store on dropbox for multiple instances)</li>
+				<li>updated ui
+					<ul>
+						<li>wizard for date ranges, sliders, etc</li>
+						<li>wizard for generating website patterns</li>
+						<li>support for locales</li>
+					</ul>
+				</li>
+			</ul>
+			<h3>Change Log</h3>
+			<h4>1.0.3</h4>
+			<ul>
+				<li>Custom blocker page/redirect to url <small>(Thanks Henri Huttunen)</small></li>
+				<li>Added Roadmap</li>
+				<li>UI Changes</li>
+				<li>Bug Fixes</li>
+			</ul>
+		</div>
+		<div class="modal-footer">
+			<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+			<!--<button class="btn btn-primary">Save changes</button>-->
+		</div>
+
+	</div>
+	<!-- ROADMAP -->
+
+</body>
+</html>
